@@ -1,0 +1,21 @@
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Address</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of listOfData" class="editable-row">
+    <td>
+      <div class="editable-cell" [hidden]="editableId === data.uuid" (click)="startEdit(data.uuid)">
+        {{ data.name }}
+      </div>
+      <input class="w-95 border rounded py-2 px-2" [hidden]="editableId !== data.uuid" type="text" [(ngModel)]="data.name" (blur)="stopEdit(data.name)" aria-label="editable cell"/>
+    </td>
+    <td>{{ data.age }}</td>
+    <td>{{ data.address }}</td>
+  </tr>
+  </tbody>
+</table>

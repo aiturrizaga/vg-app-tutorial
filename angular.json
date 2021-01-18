@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "vg-app-tutorial"
+  "defaultProject": "vg-app-tutorial",
+  "cli": {
+    "analytics": false
+  }
 }
