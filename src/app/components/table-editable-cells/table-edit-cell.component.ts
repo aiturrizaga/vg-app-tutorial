@@ -3,22 +3,22 @@ import {Component, OnInit} from '@angular/core';
 interface ItemData {
   uuid: string;
   name: string;
-  age: number;
-  address: string;
+  note: number;
+  description: string;
 }
 
 export const TABLE_EDIT_DATA: ItemData[] = [
   {
     uuid: '2ce55aa4-04c2-43af-ab28-5023fa0e1900',
     name: 'Alvaro Iturrizaga Vargas',
-    age: 21,
-    address: 'Av. Los Nogales #1542, Lima'
+    note: 12,
+    description: 'DESAPROBADO'
   },
   {
     uuid: 'dc47d945-6577-47c8-a3df-c772f19de319',
     name: 'Martin Samán Arata',
-    age: 19,
-    address: 'Urb. Las Palmeras Lt. 5 Mz. 2'
+    note: 19,
+    description: 'APROBADO'
   }
 ];
 
@@ -72,7 +72,7 @@ export class TableEditCellComponent implements OnInit {
     this.editableId = id;
   }
 
-  stopEdit(value: string): void {
+  stopEdit(value: any): void {
     this.editableId = null;
     console.log('Update value: ', value);
   }
