@@ -1,2 +1,5 @@
-<input type="checkbox" [indeterminate]="checkboxStatus === indeterminate" [(ngModel)]="checkboxStatus"
-       (ngModelChange)="changeStatus()" aria-label="tri state checkbox"/> {{ label }}
+<div class="flex justify-start items-center gap-x-2">
+  <input type="checkbox" [indeterminate]="checkboxStatus === indeterminate" [(ngModel)]="checkboxStatus"
+         (change)="changeStatus()" [disabled]="isDisabled" aria-label="tri state checkbox"/>
+  <span [ngClass]="{'disabled-text': isDisabled}">{{ label }}</span>
+</div>
