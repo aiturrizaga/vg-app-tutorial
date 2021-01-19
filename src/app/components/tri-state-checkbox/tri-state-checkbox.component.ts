@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-export declare type StateCheckboxType = 'checked' | 'indeterminate' | 'unchecked';
-
-interface CheckboxItem {
-  status: StateCheckboxType;
+export class CheckboxStatus {
+  public static ITEM_UNCHECKED = false;
+  public static ITEM_CHECKED = true;
+  public static ITEM_INDETERMINATE = null;
 }
 
 @Component({
@@ -13,50 +13,46 @@ interface CheckboxItem {
 })
 export class TriStateCheckboxComponent implements OnInit {
 
-  private _checked: StateCheckboxType = 'checked';
-  private _unchecked: StateCheckboxType = 'unchecked';
-  private _indeterminate: StateCheckboxType = 'indeterminate';
+  @Input() label = '';
 
-  checkbox: CheckboxItem = {status: this.checked};
+  private _activeIndeterminate = true;
+  indeterminate = CheckboxStatus.ITEM_INDETERMINATE;
+
+  checkboxStatus = CheckboxStatus.ITEM_UNCHECKED;
 
   constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  checkStatus(checkbox) {
-    let result: boolean;
-    switch (checkbox.status) {
-      case this.checked: {
-        checkbox.status = this.unchecked;
-        result = false;
-        break;
-      }
-      case this.unchecked: {
-        checkbox.status = this.indeterminate;
-        result = null;
-        break;
-      }
-      case this.indeterminate: {
-        checkbox.status = this.checked;
-        result = true;
-        break;
-      }
+    if (this.checkboxStatus === CheckboxStatus.ITEM_UNCHECKED) {
+      this.activeIndeterminate = true;
+    } else if (this.checkboxStatus === CheckboxStatus.ITEM_CHECKED) {
+      this.activeIndeterminate = false;
     }
-
-    console.log('Status: ', result);
   }
 
-  get checked(): StateCheckboxType {
-    return this._checked;
+  changeStatus() {
+    if (this.activeIndeterminate) {
+      this.checkboxStatus = null;
+    }
+    switch (this.checkboxStatus) {
+      case CheckboxStatus.ITEM_CHECKED:
+        this.checkboxStatus = CheckboxStatus.ITEM_CHECKED;
+        break;
+      case CheckboxStatus.ITEM_UNCHECKED:
+        this.activeIndeterminate = true;
+        break;
+      case CheckboxStatus.ITEM_INDETERMINATE:
+        this.activeIndeterminate = false;
+        break;
+    }
   }
 
-  get unchecked(): StateCheckboxType {
-    return this._unchecked;
+  get activeIndeterminate(): boolean {
+    return this._activeIndeterminate;
   }
 
-  get indeterminate(): StateCheckboxType {
-    return this._indeterminate;
+  set activeIndeterminate(value: boolean) {
+    this._activeIndeterminate = value;
   }
 }
