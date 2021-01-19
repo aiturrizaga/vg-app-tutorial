@@ -1,12 +1,14 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
+export declare type NumericType = 'number' | 'decimal';
+
 @Directive({
   selector: '[appOnlyNumber]'
 })
 export class OnlyNumberDirective {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('numericType') numericType: string; // number | decimal
+  @Input('numericType') numericType: NumericType; // number | decimal
   // tslint:disable-next-line:no-input-rename
   @Input('maxValue') maxValue: number; // maximo valor
 

@@ -1,0 +1,2 @@
+<input type="checkbox" [indeterminate]="checkbox?.status === indeterminate" [ngModel]="checkbox?.status === checked"
+       (ngModelChange)="checkStatus(checkbox)" aria-label="tri state checkbox"/> Status: {{ checkbox?.status }}

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { TableEditCellComponent } from './components/table-editable-cells/table-edit-cell.component';
+import { TriStateCheckboxComponent } from './components/tri-state-checkbox/tri-state-checkbox.component';
 
 import { INPUT_UTIL_DIRECTIVES, OnlyNumberDirective } from './directives';
 
@@ -18,6 +19,7 @@ const APP_DIRECTIVES = [
   declarations: [
     AppComponent,
     TableEditCellComponent,
+    TriStateCheckboxComponent,
     APP_DIRECTIVES
   ],
   imports: [
