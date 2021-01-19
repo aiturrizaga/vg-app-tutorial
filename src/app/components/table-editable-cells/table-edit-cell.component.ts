@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface ItemData {
   uuid: string;
@@ -62,6 +62,8 @@ export class TableEditCellComponent implements OnInit {
   editableId: string | null = null;
   listOfData: ItemData[] = TABLE_EDIT_DATA;
 
+  selectedValue: number;
+
   constructor() {
   }
 
@@ -74,7 +76,7 @@ export class TableEditCellComponent implements OnInit {
 
   stopEdit(value: any): void {
     this.editableId = null;
-    console.log('Update value: ', value);
+    this.selectedValue = value;
   }
 
 }

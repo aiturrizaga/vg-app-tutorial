@@ -19,10 +19,16 @@
         <input class="w-95 border rounded py-2 px-2" type="text"
                [appAutoFocus]="true" [appSelectAll]="true"
                appOnlyNumber numericType="number" [maxValue]="20"
-               [(ngModel)]="data.note" (blur)="stopEdit(data.note)" aria-label="editable cell"/>
+               [(ngModel)]="data.note" (blur)="stopEdit(data.note)" (keyup.enter)="stopEdit(data.note)"
+               aria-label="editable cell"/>
       </ng-template>
     </td>
     <td>{{ data.description }}</td>
   </tr>
   </tbody>
 </table>
+
+<div class="py-2">
+  <span class="font-medium">Nota actualizada: </span>
+  <span>{{ selectedValue }}</span>
+</div>
